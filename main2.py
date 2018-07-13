@@ -336,8 +336,8 @@ class Ui_MainWindow(object):
                 # print(text)
                 if current==0:
                     for uid in dataID:
-                        data = MainWindow.ui.GetID.get_all_friends_user(uid)
-                        self.load_QTable(data,tab[current])
+                        MainWindow.ui.GetID.get_all_friends_user(uid,tab[current])
+                        # self.load_QTable(data,tab[current])
                 if current==1:
                     for uid in dataID:
                         data = MainWindow.ui.GetID.get_all_members_group(uid)
@@ -368,6 +368,8 @@ class Ui_MainWindow(object):
         self.load_token()
         self.btnDel.clicked.connect(self.delete_table)
         self.txtToken.setPlaceholderText('Nhập token ở đây')
+        self.progress = QtWidgets.QProgressBar()
+        self.progress.setGeometry(200, 80, 250, 20)
     def save_data(self):
         tab ={0:self.tableWidget_1,1:self.tableWidget_2,2:self.tableWidget_3,3:self.tableWidget_4,4:self.tableWidget_5}
         current = self.tabWidget.currentIndex()
